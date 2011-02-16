@@ -7,13 +7,12 @@ doResign(fileName, certPattern)
 return
 
 on open of these_items -- "open" handler triggered by drag'n'drop launches
+	set certPattern to getCertPattern()
 	repeat with i from 1 to the count of these_items
 		set this_item to (item i of these_items)
 		set the item_info to info for this_item
-		if (the name extension of the item_info is in extList) then
-			set certPattern to getCertPattern()
+		if (the name extension of the item_info is in extList) then		
 			doResign(this_item, certPattern)
-			return
 		end if
 	end repeat
 end open
